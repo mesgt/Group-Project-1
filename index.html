@@ -1,14 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 1</title>
-  </head>
-  <body>
-    <h1>Calorie</h1>
 
-<h1> TEST TEST TEST</h1>
-<h2>this is another test by Evan</h2>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script src="./assets/js/script.js" defer></script>  
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+      
+    />
+  <title>Calorie Counter</title>
+</head>
+
+<body>
+  <main class="container"></main>
+  <!-- nav bar here -->
+  <nav class="navbar fixed-top">
+
+  </nav>
+
+    <div class="row">
+      <div class="col m4 l3 grey">
+        <p>Add search input and search button here.</p>
+        <div class="nav-wrapper">
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" required />
+                  <label class="label-icon" for="search"
+                    ><i class="material-icons hoover">search</i></label
+                  >
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+        <button id="submitFood" type="submit" class="#">Search</button>
+                  <a class="dropdown-trigger btn red" href="#" data-target="dropdown1"
+            >MEASUREMENT</a
+          >
+          <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">ounce</a></li>
+            <li><a href="#!">serving</a></li>
+          </ul>
+        <!-- append food name, quantity and cal to this list -->
+        <ul id="foodList" class="#">
+          <li class="food">Yum Yum One</li>
+          <li class="food">Yum Yum Two</li>
+          <li class="food">Yum Yum Three</li>
+          <li class="food">Yum Yum Four</li>
+        </ul>
+
+        <div class="row">
+          <div class="col s12 m12 l12 red">
+            <h6 id="totalCalRemaining">Display cal remaining here.</h6>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="row"> -->
+      <div id="" class="col s4 m8 l9 blue">
+        <p>Caloric intake goal for the day will be here.</p>
+        <input id="goalInput"> Add input space here with submit button.</input>
+
+        <!-- </div> -->
+      </div>
+      <div class="col s4 m8 l9 red">
+        <!-- <h6 id="totalCalRemaining">Week at a glance.</h6> -->
+        <div class="card">
+          <div class="card-content">
+            <p>Week at a glance.</p>
+          </div>
+          <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+              <li class="tab"><a href="#test4">Mon</a></li>
+              <li class="tab"><a class="active" href="#test5">Tue</a></li>
+              <li class="tab"><a href="#test6">Wed</a></li>
+              <li class="tab"><a href="#test6">Thur</a></li>
+              <li class="tab"><a href="#test6">Fri</a></li>
+              <li class="tab"><a href="#test6">Sat</a></li>
+              <li class="tab"><a href="#test6">Sun</a></li>
+            </ul>
+          </div>
+          <div class="card-content grey lighten-4">
+            <div id="test4">Test 1</div>
+            <div id="test5">Test 2</div>
+            <div id="test6">Test 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+   
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <h1></h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
 </html>
+
