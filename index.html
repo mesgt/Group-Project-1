@@ -4,11 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project 1</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1>Calorie</h1>
+    <div class="container">
+      <div class="row green accent-3">
+        <div class="col m6 green accent-3">
+          <div>
+            <div class="nav-wrapper">
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" required />
+                  <label class="label-icon" for="search"
+                    ><i class="material-icons hoover">search</i></label
+                  >
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col m6 green accent-3">
+          <a class="dropdown-trigger btn red" href="#" data-target="dropdown1"
+            >MEASUREMENT</a
+          >
+          <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">ounce</a></li>
+            <li><a href="#!">serving</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+    </div>
 
-<h1> TEST TEST TEST</h1>
+    <div class="drop-down"></div>
+    <script src="./assets/js/script.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
