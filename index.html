@@ -14,6 +14,10 @@
       rel="stylesheet"
       
     />
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    </script> 
+          <script type = "text/javascript"
+          src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>      
   <title>Calorie Counter</title>
 </head>
 
@@ -29,7 +33,7 @@
         <p>Add search input and search button here.</p>
         <div class="nav-wrapper">
               <form>
-                <div class="input-field">
+                <div class="input-field red">
                   <input id="search" type="search" required />
                   <label class="label-icon" for="search"
                     ><i class="material-icons hoover">search</i></label
@@ -39,13 +43,22 @@
               </form>
             </div>
         <button id="submitFood" type="submit" class="#">Search</button>
-                  <a class="dropdown-trigger btn red" href="#" data-target="dropdown1"
-            >MEASUREMENT</a
-          >
-          <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">ounce</a></li>
-            <li><a href="#!">serving</a></li>
+
+        <div class = "container"> 
+          <ul id = "dropdown" class = "dropdown-content">
+             <li>Ounce</li>
+             <li>Cup</li>
+             <li>Gram</li>
+             <li>Pound</li>
+             <li>Pint</li>
+             <li>Tablespoon</li>
+             <li>Teaspoon</li>
           </ul>
+          
+          <a class = "btn dropdown-button" href = "#" data-activates = "dropdown">Unit of Measurement
+             <i class = "mdi-navigation-arrow-drop-down right"></i></a>	 
+        </div>
+
         <!-- append food name, quantity and cal to this list -->
         <ul id="foodList" class="#">
           <li class="food">Yum Yum One</li>
@@ -94,11 +107,6 @@
         </div>
       </div>
     </div>
-
-
-
-   
-
     </div>
     </div>
     </div>
@@ -106,6 +114,7 @@
 
     <h1></h1>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

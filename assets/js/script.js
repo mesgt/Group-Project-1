@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   //user searches through api data
   var userInput = JSON.parse(localStorage.getItem(userInput)) || [];
