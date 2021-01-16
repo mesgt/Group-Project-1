@@ -30,35 +30,37 @@
 
     <div class="row">
       <div class="col m4 l3 grey">
-        <p>Add search input and search button here.</p>
-        <div class="nav-wrapper">
-              <form>
-                <div class="input-field red">
-                  <input id="search" type="search" required />
-                  <label class="label-icon" for="search"
-                    ><i class="material-icons hoover">search</i></label
-                  >
-                  <i class="material-icons">close</i>
-                </div>
-              </form>
-            </div>
-        <button id="submitFood" type="submit" class="#">Search</button>
-
-        <div class = "container"> 
-          <ul id = "dropdown" class = "dropdown-content">
-             <li>Ounce</li>
-             <li>Cup</li>
-             <li>Gram</li>
-             <li>Pound</li>
-             <li>Pint</li>
-             <li>Tablespoon</li>
-             <li>Teaspoon</li>
-          </ul>
-          
-          <a class = "btn dropdown-button" href = "#" data-activates = "dropdown">Unit of Measurement
-             <i class = "mdi-navigation-arrow-drop-down right"></i></a>	 
+        <!-- QUANTITY INPUT ROW  -->
+        <row class="quantity">
+          <input
+            placeholder="Quantity"
+            id="quantity-of-food"
+            type="text"
+            class="validate"
+          />
+        </row>
+        <!-- MEASUREMENT DROPDOWN ROW -->
+        <div class="row">
+            <select id="measurement" class="browser-default">
+            <option value="" disabled selected>Measurement Type</option>
+            <option value="teaspoon">teaspoon</option>
+            <option value="tablespoon">tablespoon</option>
+            <option value="cup">cup</option>
+            <option value="ounce">ounce</option>
+          </select>
         </div>
-
+        <!-- TYPE OF FOOD INPUT  -->
+        <div class="row">
+          <input
+            placeholder="Type of food"
+            id="type-of-food"
+            type="text"
+            class="validate"
+          />
+        </div>
+        <div class="row">
+          <a class="waves-effect waves-light btn-small" id="submitFood">Submit</a>
+        </div>
         <!-- append food name, quantity and cal to this list -->
         <ul id="foodList" class="#">
           <li class="food">Yum Yum One</li>
