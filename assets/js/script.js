@@ -12,25 +12,36 @@ $(document).ready(function () {
 
 
     //Second API- recipe. Triggered when user enters new food ingredient.
-    let recipeRequest = "rice";//this variable will need to be global- food user Input
-    let queryRecipeURL = `https://yummly2.p.rapidapi.com/feeds/search?start=0&maxResult=18&FAT_KCALMax=1000&maxTotalTimeInSeconds=7200&allowedAttribute=diet-lacto-vegetarian%2Cdiet-low-fodmap&q=${recipeRequest}`;
-
+    
+    let recipeRequest = "cabbage";//this variable will need to be global- food user Input
+    let queryRecipeURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${recipeRequest}&number=5&limitLicense=${true}&ranking=1&ignorePantry=${true}&apiKey=4da9dd4148874160a27f2aee5c61d935`;
+    //FIND RECIPE NAME
     $.ajax({
-        "async": true,
-        "crossDomain": true,
         url: queryRecipeURL,
         method: "GET",
-        "headers": {
-            "x-rapidapi-key": "d3e95b7309msh0734a6ab22cb20cp1b5f68jsn85dde42938a0",
-            "x-rapidapi-host": "yummly2.p.rapidapi.com"
-        }
-    }).then(function (response) {
-        console.log(response);
-        console.log(response.relatedPhrases.recipes[0]);
-        var recipe = response.relatedPhrases.recipes[0];
-        $("#recipeName").text(JSON.stringify(recipe)); //Need text after <>, not the whole thing
-        // var mealImageURL = JSON.parse(response.parsedIngredients[0].image-url);
-        // $("#recipeImage").attr("src", mealImageURL);
+
+    }).then(function (recipeResponse) {
+        console.log(recipeResponse);
+        console.log(recipeResponse[0].title);
+        var recipeLookUp = recipeResponse[0].title;
+        let findRecipeURL = `https://api.spoonacular.com//recipes/extract?url=https://foodista.com/recipe/${recipeLookUp}&forceExtraction=true&analyze=false&apiKey=4da9dd4148874160a27f2aee5c61d935`;
+        $("#recipeName").text(JSON.stringify(recipeLookUp)); 
+        //FIND RECIPE INSTRUCTIONS
+        $.ajax({
+            url: findRecipeURL,
+            method: "GET",
+        }).then(function (recipeFind) {
+        console.log(recipeFind);
+        console.log(recipeFind.instructions);
+        var recipeDisplay = recipeFind.instructions;
+        $("#recipe").text(JSON.stringify(recipeDisplay));
+        var mealImageURL = recipeFind.image;
+        console.log(mealImageURL);
+        $("#recipeImage").attr("src", mealImageURL);
+        });
+
+
+
         
 
     });
