@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   //user searches through api data
   var userInput = JSON.parse(localStorage.getItem(userInput)) || [];
@@ -11,11 +10,11 @@ $(document).ready(function () {
     function renderButtons() {
       $("#foodList").empty();
       for (var i = 0; i < foodItem.length; i++) {
-          var addList = $("<li>");
-          addList.addClass("foodItem");
-          var foodButton= $("<button>");
-          foodButton.addClass("btn rounded");
-          foodButton.text(foodItem[i]);
+        var addList = $("<li>");
+        addList.addClass("foodItem");
+        var foodButton = $("<button>");
+        foodButton.addClass("btn rounded");
+        foodButton.text(foodItem[i]);
       }
     }
     function foodStringRequest() {
@@ -32,6 +31,6 @@ $(document).ready(function () {
     foodStringRequest();
     renderButtons();
   });
-  
+
   //console.log(userInput);
 });
