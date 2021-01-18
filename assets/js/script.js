@@ -23,8 +23,8 @@ $(document).ready(function () {
         foodQuantity = $("#quantity-of-food").val().trim();
         foodMeasurement = $("#measurement").val();
         foodType = $("#type-of-food").val().trim();
-        date = document.getElementById("selected-date");
-        console.log(date.value);
+        // date = document.getElementById("selected-date");
+        // console.log(date.value);
 
         // CONCATENATE USER UI INPUT PREPARE TO SEND TO API \\
         let foodStringAPI = `${foodQuantity} ${foodMeasurement} ${foodType}`;
@@ -99,7 +99,6 @@ $(document).ready(function () {
     function confirmResponse(response) {
         console.log(response);
         console.log(response.calories);
-        console.log(date.value);
         console.log(foodQuantity);
     }
 
