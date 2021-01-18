@@ -4,20 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          
   <link      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <script src="./assets/js/script.js" defer></script>  
+    <!-- <script src="./assets/js/script.js" defer></script>   -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
       
     />
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
-    </script> 
-          <script type = "text/javascript"
-          src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+          <!-- <script type = "text/javascript" -->
+          <!-- src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>       -->
   <title>Calorie Counter</title>
 </head>
 
@@ -30,18 +30,22 @@
 
     <div class="row">
       <div class="col m4 l3 grey">
+        <!-- DATE SELECTION INPUT  -->
+        <row class="date-picker">
+          <input type="date" name="" id="selected-date">
+        </row>
         <!-- QUANTITY INPUT ROW  -->
         <row class="quantity">
           <input
             placeholder="Quantity"
             id="quantity-of-food"
             type="text"
-            class="validate"
+            class="validate center-align"
           />
         </row>
         <!-- MEASUREMENT DROPDOWN ROW -->
         <div class="row">
-            <select id="measurement" class="browser-default">
+            <select id="measurement" class="browser-default center-align grey">
             <option value="" disabled selected>Measurement Type</option>
             <option value="teaspoon">teaspoon</option>
             <option value="tablespoon">tablespoon</option>
@@ -55,11 +59,11 @@
             placeholder="Type of food"
             id="type-of-food"
             type="text"
-            class="validate"
+            class="validate center-align"
           />
         </div>
-        <div class="row">
-          <a class="waves-effect waves-light btn-small" id="submitFood">Submit</a>
+        <div class="row center-align ">
+          <a class="waves-effect waves-light btn-small red" id="submitFood">Submit</a>
         </div>
         <!-- append food name, quantity and cal to this list -->
         <ul id="foodList" class="#">
@@ -115,7 +119,20 @@
     </div>
 
     <h1></h1>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Invalid Input</h4>
+          <p>We could not process your input</p>
+          <p>Please try again</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+            >CLOSE</a
+          >
+        </div>
+      </div>
+    
     <script src="./assets/js/script.js"></script>
 </body>
 
