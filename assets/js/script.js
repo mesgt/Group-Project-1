@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   var userInput = JSON.parse(localStorage.getItem(userInput)) || [];
 
   //THESE GLOBAL VARIABLES ONLY USE W/IN RESPONSE FUNCTION \\
@@ -28,12 +29,42 @@ $(document).ready(function () {
     // CONCATENATE USER UI INPUT PREPARE TO SEND TO API \\
     let foodStringAPI = `${foodQuantity} ${foodMeasurement} ${foodType}`;
 
+
     // LOCAL STORAGE \\
     userInput.push(foodStringAPI);
     localStorage.setItem("userInput", JSON.stringify(userInput));
 
+
+    //Second API- recipe. Triggered when user enters new food ingredient.
+    
+    let recipeRequest = "mushroom";//this variable will need to be global- food user Input
+    let queryRecipeURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${recipeRequest}&number=5&limitLicense=${true}&ranking=1&ignorePantry=${true}&apiKey=4da9dd4148874160a27f2aee5c61d935`;
+    //FIND RECIPE NAME
+    $.ajax({
+        url: queryRecipeURL,
+        method: "GET",
+
+    }).success(function (recipeResponse) {
+        var recipeLookUp = recipeResponse[0].title;
+        $("#recipeName").text(JSON.stringify(recipeLookUp));
+        var recipeID = recipeResponse[0].id; //ID TO LOOK UP RECIPE INSTRUCTIONS
+        let findRecipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=${false}&apiKey=4da9dd4148874160a27f2aee5c61d935`;
+        
+        //FIND RECIPE INSTRUCTIONS
+        $.ajax({
+            url: findRecipeURL,
+            method: "GET",
+    
+        }).success(function (recipeInstructions) {
+        var recipeDisplay = recipeInstructions.summary;
+        const recipeDisplayMod = JSON.stringify(recipeDisplay);
+        $("#recipe").text(recipeDisplayMod); //NEED TO EXCLUDE WORDING IN <>. REMOVE QUOTES FROM TITLE.
+        var mealImageURL = recipeInstructions.image;
+        $("#recipeImage").attr("src", mealImageURL);
+
     // NUTRIENTS API AJAX \\
     let queryFoodURL = `https://api.edamam.com/api/nutrition-data?app_id=c502f564&app_key=a522a1a262d4a5a3968b56ede64ba74a&ingr=${foodStringAPI}`;
+
 
     //API CALL\\
     $.ajax({
@@ -42,6 +73,7 @@ $(document).ready(function () {
     }).then(function (response) {
       confirmResponse(response);
 
+
       //ACTIVATE MODAL \\
       if (response.totalWeight === 0) {
         toggleModal();
@@ -49,6 +81,7 @@ $(document).ready(function () {
 
       //CLEAR FORM FUNCTION CALL \\
       formClear();
+
     });
   });
 
@@ -60,6 +93,7 @@ $(document).ready(function () {
     document.getElementById("selected-date").value = "";
   }
 
+
   //FUNCTION CARRIES THROUGH RESPONSE OBJECT FROM AJAX \\
   function confirmResponse(response) {
     console.log(response);
@@ -67,4 +101,5 @@ $(document).ready(function () {
     console.log(date.value);
     console.log(foodQuantity);
   }
+
 });
