@@ -22,8 +22,6 @@ $(document).ready(function () {
     foodQuantity = $("#quantity-of-food").val().trim();
     foodMeasurement = $("#measurement").val();
     foodType = $("#type-of-food").val().trim();
-    date = document.getElementById("selected-date");
-    console.log(date.value);
 
     // CONCATENATE USER UI INPUT PREPARE TO SEND TO API \\
     let foodStringAPI = `${foodQuantity} ${foodMeasurement} ${foodType}`;
@@ -84,14 +82,13 @@ $(document).ready(function () {
     document.getElementById("quantity-of-food").value = "";
     document.getElementById("measurement").value = "";
     document.getElementById("type-of-food").value = "";
-    document.getElementById("selected-date").value = "";
   }
 
   //FUNCTION CARRIES THROUGH RESPONSE OBJECT FROM AJAX \\
   function confirmResponse(response) {
     console.log(response);
     console.log(response.calories);
-    console.log(date.value);
+
     console.log(foodQuantity);
   }
 });
