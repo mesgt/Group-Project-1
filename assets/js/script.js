@@ -17,6 +17,7 @@ $(document).ready(function () {
   // SUBMIT EVENT LISTENER \\
   $("#submitFood").on("click", function (event) {
     event.preventDefault();
+    var recipeDisplayMod = "";
 
     // SETTING VARIABLES FOR UI INPUT TO MAKE FOODSTRINGAPI \\
     foodQuantity = $("#quantity-of-food").val().trim();
@@ -50,9 +51,11 @@ $(document).ready(function () {
 
       //Second API- recipe. Triggered when user enters new food ingredient.
 
-      let recipeRequest = foodType; //this variable will need to be global- food user Input
+      let recipeRequest = foodType; 
       console.log(recipeRequest);
-      let queryRecipeURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${recipeRequest}&number=5&limitLicense=${true}&ranking=1&ignorePantry=${true}&apiKey=4da9dd4148874160a27f2aee5c61d935`;
+      let apiKey1 = "4da9dd4148874160a27f2aee5c61d935"
+      let apiKey2 = "3972ed1ffd3e45199211b165635f7657"
+      let queryRecipeURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${recipeRequest}&number=5&limitLicense=${true}&ranking=1&ignorePantry=${true}&apiKey=${apiKey2}`;
       //FIND RECIPE NAME
       $.ajax({
         url: queryRecipeURL,
@@ -61,25 +64,36 @@ $(document).ready(function () {
         var recipeLookUp = recipeResponse[0].title;
         $("#recipeName").text(JSON.stringify(recipeLookUp));
         var recipeID = recipeResponse[0].id; //ID TO LOOK UP RECIPE INSTRUCTIONS
-        let findRecipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=${false}&apiKey=4da9dd4148874160a27f2aee5c61d935`;
+        let findRecipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=${false}&apiKey=${apiKey2}`;
 
-        //FIND RECIPE INSTRUCTIONS
+        //FIND RECIPE SUMMARY AND INSTRUCTIONS
         $.ajax({
           url: findRecipeURL,
           method: "GET",
         }).then(function (recipeInstructions) {
-          var recipeDisplay = recipeInstructions.summary;
-          const recipeDisplayMod = JSON.stringify(recipeDisplay);
-          $("#recipe").text(recipeDisplayMod); //NEED TO EXCLUDE WORDING IN <>. REMOVE QUOTES FROM TITLE.
-          var mealImageURL = recipeInstructions.image;
-          $("#recipeImage").attr("src", mealImageURL);
+        //RECIPE SUMMARY
+        console.log(recipeInstructions);
+        var summaryDisplay = recipeInstructions.summary;
+        summaryDisplayMod = JSON.stringify(summaryDisplay);
+        console.log(summaryDisplayMod);
+        $("#recipeSummary").append(summaryDisplayMod); //SET FIELD TO CLEAR BEFORE FUNCTION RUNS. NEED TO EXCLUDE LINKS. REMOVE QUOTES FROM TITLE AND BODY.
+        
+        var recipeDisplay = recipeInstructions.instructions;
+        recipeDisplayMod = JSON.stringify(recipeDisplay);
+        console.log(recipeDisplayMod);
+        $("#recipe").append(recipeDisplayMod); //NEED TO EXCLUDE \n. REMOVE QUOTES FROM TITLE AND BODY.
+        
+        var mealImageURL = recipeInstructions.image;
+        $("#recipeImage").attr("src", mealImageURL);
         });
       });
     });
   });
   //CLEAR FORM \\
   function formClear() {
-    document.getElementById("quantity-of-food").value = "";
+    $("#quantity-of-food").value = "";
+
+    // document.getElementById("quantity-of-food").value = "";
     document.getElementById("measurement").value = "";
     document.getElementById("type-of-food").value = "";
   }
