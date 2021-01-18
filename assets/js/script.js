@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     //Second API- recipe. Triggered when user enters new food ingredient.
     
-    let recipeRequest = "beef";//this variable will need to be global- food user Input
+    let recipeRequest = "mushroom";//this variable will need to be global- food user Input
     let queryRecipeURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${recipeRequest}&number=5&limitLicense=${true}&ranking=1&ignorePantry=${true}&apiKey=4da9dd4148874160a27f2aee5c61d935`;
     //FIND RECIPE NAME
     $.ajax({
@@ -21,8 +21,6 @@ $(document).ready(function () {
         method: "GET",
 
     }).success(function (recipeResponse) {
-        console.log(recipeResponse);
-        console.log(recipeResponse[0].title);
         var recipeLookUp = recipeResponse[0].title;
         $("#recipeName").text(JSON.stringify(recipeLookUp));
         var recipeID = recipeResponse[0].id; //ID TO LOOK UP RECIPE INSTRUCTIONS
@@ -34,29 +32,12 @@ $(document).ready(function () {
             method: "GET",
     
         }).success(function (recipeInstructions) {
-        console.log(recipeInstructions);
-        console.log(recipeInstructions.summary);
-        var recipeDisplay = recipeInstructions.instructions;
-        console.log(recipeDisplay);
-        $("#recipe").text(JSON.stringify(recipeDisplay));
+        var recipeDisplay = recipeInstructions.summary;
+        const recipeDisplayMod = JSON.stringify(recipeDisplay);
+        $("#recipe").text(recipeDisplayMod);
+        var mealImageURL = recipeInstructions.image;
+        $("#recipeImage").attr("src", mealImageURL);
 
-
-        // $.ajax({
-        //     url: findRecipeURL,
-        //     method: "GET",
-        // }).then(function (recipeFind) {
-        // console.log(recipeFind);
-        // console.log(recipeFind.instructions);
-        // var recipeDisplay = recipeFind.instructions;
-        // $("#recipe").text(JSON.stringify(recipeDisplay));
-        // var mealImageURL = recipeFind.image;
-        // console.log(mealImageURL);
-        // $("#recipeImage").attr("src", mealImageURL);
-        // });
-
-
-
-        
 
     });
 
