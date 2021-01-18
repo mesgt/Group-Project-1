@@ -34,7 +34,7 @@ $(document).ready(function () {
         }).success(function (recipeInstructions) {
         var recipeDisplay = recipeInstructions.summary;
         const recipeDisplayMod = JSON.stringify(recipeDisplay);
-        $("#recipe").text(recipeDisplayMod);
+        $("#recipe").text(recipeDisplayMod); //NEED TO EXCLUDE WORDING IN <>. REMOVE QUOTES FROM TITLE.
         var mealImageURL = recipeInstructions.image;
         $("#recipeImage").attr("src", mealImageURL);
 
