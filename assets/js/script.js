@@ -75,13 +75,16 @@ $(document).ready(function () {
         console.log(recipeInstructions);
         var summaryDisplay = recipeInstructions.summary;
         summaryDisplayMod = JSON.stringify(summaryDisplay);
+        summaryDisplayMod = summaryDisplayMod.replace(/"/g,"");
         console.log(summaryDisplayMod);
-        $("#recipeSummary").append(summaryDisplayMod); //SET FIELD TO CLEAR BEFORE FUNCTION RUNS. NEED TO EXCLUDE LINKS. REMOVE QUOTES FROM TITLE AND BODY.
+        $("#recipeSummary").append(summaryDisplayMod); //SET FIELD TO CLEAR BEFORE FUNCTION RUNS. NEED TO EXCLUDE LINKS.
         
         var recipeDisplay = recipeInstructions.instructions;
         recipeDisplayMod = JSON.stringify(recipeDisplay);
+        recipeDisplayMod = recipeDisplayMod.replace( /\\n/g, " ");
+        recipeDisplayMod = recipeDisplayMod.replace(/"/g,"");
         console.log(recipeDisplayMod);
-        $("#recipe").append(recipeDisplayMod); //NEED TO EXCLUDE \n. REMOVE QUOTES FROM TITLE AND BODY.
+        $("#recipe").append(recipeDisplayMod); 
         
         var mealImageURL = recipeInstructions.image;
         $("#recipeImage").attr("src", mealImageURL);
@@ -92,17 +95,14 @@ $(document).ready(function () {
   //CLEAR FORM \\
   function formClear() {
     $("#quantity-of-food").value = "";
-
-    // document.getElementById("quantity-of-food").value = "";
-    document.getElementById("measurement").value = "";
-    document.getElementById("type-of-food").value = "";
+    $("#measurement").value = "";
+    $("#type-of-food").value = "";
   }
 
   //FUNCTION CARRIES THROUGH RESPONSE OBJECT FROM AJAX \\
   function confirmResponse(response) {
     console.log(response);
     console.log(response.calories);
-
     console.log(foodQuantity);
   }
 });
