@@ -3,11 +3,12 @@ $(document).ready(function () {
 
   //THESE GLOBAL VARIABLES ONLY USE W/IN RESPONSE FUNCTION \\
   let foodStringAPI;
+
   let foodQuantity;
   let foodMeasurement;
   let foodType;
 
-  //MODAL INITIALIZATION FUNCTION \\
+  // MODAL INITIALIZATION FUNCTION \\
   $(".modal").modal();
   function toggleModal() {
     var instance = M.Modal.getInstance($("#modal1"));
@@ -41,19 +42,19 @@ $(document).ready(function () {
     let API_IDEdamam4 = "df045e0d";
     let queryFoodURL = `https://api.edamam.com/api/nutrition-data?app_id=${API_IDEdamam2}&app_key=${API_keyEdamam2}&ingr=${foodStringAPI}`;
 
-    //API CALL\\
+    // API CALL\\
     $.ajax({
       url: queryFoodURL,
       method: "GET",
-    }).then(function (response) {
-      confirmResponse(response);
+    }).then(function (nutritionResponse) {
+      confirmResponse(nutritionResponse);
 
-      //ACTIVATE MODAL \\
-      if (response.totalWeight === 0) {
+      // ACTIVATE MODAL \\
+      if (nutritionResponse.totalWeight === 0) {
         toggleModal();
       }
 
-      //CLEAR FORM FUNCTION CALL \\
+      // CLEAR FORM FUNCTION CALL \\
       formClear();
 
       //Second API- recipe. Triggered when user enters new food ingredient.
@@ -86,6 +87,7 @@ $(document).ready(function () {
       });
     });
   });
+
   //CLEAR FORM \\
   function formClear() {
     document.getElementById("quantity-of-food").value = "";
@@ -117,5 +119,13 @@ $(document).ready(function () {
       newInputCalories.text(arrUserInputCalories[i]);
       $("#main-table-header").append(newInput, newInputCalories);
     }
+
   }
+
+  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
+  $("#submit-goal-btn").on("click", function () {
+    const goalInput = $("#calorie-goal-input").val().trim();
+    $("#goal-display").text(goalInput);
+    $("#calorie-goal-input").val("");
+  });
 });
