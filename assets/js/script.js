@@ -1,13 +1,12 @@
 $(document).ready(function () {
   var userInput = JSON.parse(localStorage.getItem(userInput)) || [];
 
-  //THESE GLOBAL VARIABLES ONLY USE W/IN RESPONSE FUNCTION \\
+  // THESE GLOBAL VARIABLES ONLY USE W/IN RESPONSE FUNCTION \\
   let foodQuantity;
   let foodMeasurement;
   let foodType;
-  let date;
 
-  //MODAL INITIALIZATION FUNCTION \\
+  // MODAL INITIALIZATION FUNCTION \\
   $(".modal").modal();
   function toggleModal() {
     var instance = M.Modal.getInstance($("#modal1"));
@@ -33,19 +32,19 @@ $(document).ready(function () {
     // NUTRIENTS API AJAX \\
     let queryFoodURL = `https://api.edamam.com/api/nutrition-data?app_id=c502f564&app_key=a522a1a262d4a5a3968b56ede64ba74a&ingr=${foodStringAPI}`;
 
-    //API CALL\\
+    // API CALL\\
     $.ajax({
       url: queryFoodURL,
       method: "GET",
-    }).then(function (response) {
-      confirmResponse(response);
+    }).then(function (nutritionResponse) {
+      confirmResponse(nutritionResponse);
 
-      //ACTIVATE MODAL \\
-      if (response.totalWeight === 0) {
+      // ACTIVATE MODAL \\
+      if (nutritionResponse.totalWeight === 0) {
         toggleModal();
       }
 
-      //CLEAR FORM FUNCTION CALL \\
+      // CLEAR FORM FUNCTION CALL \\
       formClear();
 
       //Second API- recipe. Triggered when user enters new food ingredient.
@@ -77,6 +76,7 @@ $(document).ready(function () {
       });
     });
   });
+
   //CLEAR FORM \\
   function formClear() {
     document.getElementById("quantity-of-food").value = "";
@@ -85,10 +85,17 @@ $(document).ready(function () {
   }
 
   //FUNCTION CARRIES THROUGH RESPONSE OBJECT FROM AJAX \\
-  function confirmResponse(response) {
-    console.log(response);
-    console.log(response.calories);
-
+  function confirmResponse(nutritionResponse) {
+    //ONLY NEEDED IF NUTRITION API VARIABLES NEED TO BE USED
+    // console.log(nutritionResponse);
+    console.log(nutritionResponse.calories);
     console.log(foodQuantity);
   }
+
+  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
+  $("#submit-goal-btn").on("click", function () {
+    const goalInput = $("#calorie-goal-input").val().trim();
+    $("#goal-display").text(goalInput);
+    $("#calorie-goal-input").val("");
+  });
 });
