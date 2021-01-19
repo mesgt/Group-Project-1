@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <title>Calorie Counter</title>
   </head>
   <body>
     <main class="container">
       <!-- nav bar here -->
       <nav class="navbar fixed-top"></nav>
-
 
       <div class="row">
         <div class="col m4 l3 grey">
@@ -62,32 +65,27 @@
           </div>
         </div>
         <div class="row">
-
-          <input placeholder="Type of food" id="type-of-food" type="text" class="validate center-align"/>
-        </div>
-        <div class="row center-align ">
-          <a class="waves-effect waves-light btn-small red" id="submitFood">Submit</a>
-        </div>
-        <!-- append food name, quantity and cal to this list -->
-        <table>
-          <tr>
-            <th>User Input</th>
-            <th>Calories</th>
-          </tr>
-          <tr id="main-table-header"></tr>
-        </table>
-      <div class="row">
-        <div class="col s12 m12 l12 red">
-          <h6 id="totalCalRemaining">Display cal remaining here.</h6>
-        </div>
-      </div>
-      </div>
-      <div class="row">
-        <div id="" class="col s4 m8 l9 blue">
-          <p>Caloric intake goal for the day will be here.</p>
-          <input id="goalInput"> Add input space here with submit button.</input>
-
-      </div>
+          <!-- CALORIE GOAL INPUT AND DISPLAY  -->
+          <div id="" class="col s4 m8 l9 blue">
+            <div class="col m5">
+              <input
+                placeholder="Calorie Goal"
+                id="calorie-goal-input"
+                type="text"
+                class="validate center-align valign"
+              />
+            </div>
+            <div class="col m2">
+              <a
+                class="waves-effect waves-light btn-small red"
+                id="submit-goal-btn"
+                >Submit</a
+              >
+            </div>
+            <div class="col m5">
+              <h5 class="center-align" id="goal-display"></h5>
+            </div>
+          </div>
           <div class="col s4 m8 l9 red">
             <!-- <h6 id="totalCalRemaining">Week at a glance.</h6> -->
             <div class="card">
