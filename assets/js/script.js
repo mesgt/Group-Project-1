@@ -64,7 +64,7 @@ $(document).ready(function () {
 
 
       // ACTIVATE MODAL \\
-      if (nutritionResponse.totalWeight === 0) {
+      if (response.totalWeight === 0) {
         toggleModal();
       }
 
