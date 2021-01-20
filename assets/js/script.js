@@ -166,7 +166,7 @@ $(document).ready(function () {
     }, 0);
     console.log(sum);
 
-    $("#totalCalRemaining").text(sum);
+    $("#totalCalRemaining").text("Your total calories: " +sum);
 
     // CALORIE GOAL BACKGROUND COLOR CHANGE \\
     function goalColor() {
