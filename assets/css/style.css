@@ -1,7 +1,20 @@
+/* *, *::before, *::after {
+    box-sizing: border-box;
+} */
+
 body {
-  font-size: 20px;
+    font-size: 20px;
 }
 
-.card {
-    visibility: hidden;
+.nav-wrapper {
+    background-color: rgba(85, 16, 16, 0.226);
+/* needs to be centered vertically */
+}
+
+#recipeChoice {
+    /* visibility: hidden; */
+}
+
+#recipeName {
+    font-weight: bolder;
 }

@@ -8,29 +8,37 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>	
+
   <title>Calorie Counter</title>
 </head>
 
 <body>
   <main class="container"></main>
   <!-- NAV BAR -->
-  <nav class="navbar fixed-top">
-
-  </nav>
+  <nav>
+    <div class = "nav-wrapper">
+       <h2 class = "brand-logo center">Welcome to Calorie Counter</h2>
+    </div>
+ </nav>
 
     <div class="row">
-      <div class="col m4 l3 grey">
+      <div class="col m4 l3">
         
         <!-- QUANTITY INPUT ROW  -->
         <row class="quantity">
-          <input placeholder="Quantity" id="quantity-of-food" type="text" class="validate center-align"/>
+          <input placeholder="Quantity" id="quantity-of-food" type="text" class="validate float-left"/>
               <div class="row">
 
     </div>
         </row>
         <!-- MEASUREMENT DROPDOWN ROW -->
         <div class="row">
-            <select id="measurement" class="browser-default center-align grey">
+            <select id="measurement" class="browser-default center-align">
             <option value="" disabled selected>Measurement Type</option>
             <option value="teaspoon">teaspoon</option>
             <option value="tablespoon">tablespoon</option>
@@ -39,15 +47,15 @@
           </select>
         </div>
         <!-- TYPE OF FOOD INPUT  -->
-        <div class="row">
-          <input placeholder="Type of food" id="type-of-food" type="text" class="validate center-align"/>
-        </div>
+        <row class="row">
+          <input placeholder="Type of food" id="type-of-food" type="text" class="validate float-left"/>
+        </row>
         <div class="row center-align ">
-          <a class="waves-effect waves-light btn-small red" id="submitFood">Submit</a>
+          <a class="waves-effect waves-light btn-small blue" id="submitFood">Submit</a>
         </div>
         <!-- append food name, quantity and cal to this list -->
-        <ul id="foodList" class="#">
-        </ul>
+        <table id="main-table-header">
+        </table>
       <div class="row">
         <div class="col s12 m12 l12 red">
           <h6 id="totalCalRemaining">Display cal remaining here.</h6>
@@ -64,7 +72,7 @@
             <!-- SECOND API -->
             <div class="card"> 
               <div id="recipeChoice"> <!-- HIDE THIS UNTIL CLICK EVENT -->
-                <h4 id="recipeName">Recommended Recipe</h4>
+                <h5 id="recipeName">Recommended Recipe</h5>
                 <div>
                   <h5>Overview:</h5>
                   <h6 id="recipeSummary"></h6>
