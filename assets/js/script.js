@@ -8,15 +8,12 @@ $(document).ready(function () {
   let foodMeasurement;
   let foodType;
 
-
-
-
   // MODAL INITIALIZATION FUNCTION \\
 
   $(".modal").modal();
   function toggleModal() {
-      var instance = M.Modal.getInstance($("#modal1"));
-      instance.open();
+    var instance = M.Modal.getInstance($("#modal1"));
+    instance.open();
   }
 
   // SUBMIT EVENT LISTENER \\
@@ -29,8 +26,8 @@ $(document).ready(function () {
     foodMeasurement = $("#measurement").val();
     foodType = $("#type-of-food").val().trim();
 
-          //CLEAR FORM FUNCTION CALL \\
-          formClear();
+    //CLEAR FORM FUNCTION CALL \\
+    formClear();
     // CONCATENATE USER UI INPUT PREPARE TO SEND TO API \\
     let foodStringAPI = `${foodQuantity} ${foodMeasurement} ${foodType}`;
 
@@ -53,7 +50,6 @@ $(document).ready(function () {
     $.ajax({
       url: queryFoodURL,
       method: "GET",
-
     }).then(function (response) {
       confirmResponse(response);
       //LOCAL STORAGE FOR CALORIES
@@ -61,17 +57,13 @@ $(document).ready(function () {
       localStorage.setItem("userCalories", JSON.stringify(userCalories));
       applyTable();
 
-
-
       // ACTIVATE MODAL \\
-      if (nutritionResponse.totalWeight === 0) {
+      if (response.totalWeight === 0) {
         toggleModal();
       }
 
-
       // CLEAR FORM FUNCTION CALL \\
       formClear();
-
 
       //Second API- recipe. Triggered when user enters new food ingredient.
 
@@ -116,7 +108,6 @@ $(document).ready(function () {
       });
     });
 
-
     //CLEAR FORM \\
     function formClear() {
       document.getElementById("quantity-of-food").value = "";
@@ -137,12 +128,12 @@ $(document).ready(function () {
     $("#main-table-header").empty();
     //MAKING HEADERS
     let headerRow = $("<tr>");
-      let inputHeader = $("<th>");
-      inputHeader.text("User Input");
-      let calorieHeader = $("<th>");
-      calorieHeader.text("Calories");
-      headerRow.append(inputHeader, calorieHeader);
-      $("#main-table-header").append(headerRow);
+    let inputHeader = $("<th>");
+    inputHeader.text("User Input");
+    let calorieHeader = $("<th>");
+    calorieHeader.text("Calories");
+    headerRow.append(inputHeader, calorieHeader);
+    $("#main-table-header").append(headerRow);
 
     // LOOP TO BUILD USER INPUT TABLE \\
     for (let i = 0; i < userCalories.length; i++) {
@@ -154,16 +145,16 @@ $(document).ready(function () {
       let newInputCalories = $("<td>");
       newInputCalories.attr("data-number", i);
       newInputCalories.text(userCalories[i]);
-      newRow.append(newInput, newInputCalories)
+      newRow.append(newInput, newInputCalories);
       $("#main-table-header").append(newRow);
     }
-
   }
 
   //CALORIE GOAL INPUT/SUBMIT/DISPLAY
   $("#submit-goal-btn").on("click", function () {
-    const goalInput = $("#calorie-goal-input").val().trim();
+    const goalInput = parseInt($("#calorie-goal-input").val().trim());
     $("#goal-display").text(goalInput);
     $("#calorie-goal-input").val("");
+    console.log(goalInput);
   });
 });
