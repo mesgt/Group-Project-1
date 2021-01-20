@@ -7,6 +7,7 @@ $(document).ready(function () {
   let foodQuantity;
   let foodMeasurement;
   let foodType;
+  var sum;
 
   // MODAL INITIALIZATION FUNCTION \\
 
@@ -15,6 +16,15 @@ $(document).ready(function () {
     var instance = M.Modal.getInstance($("#modal1"));
     instance.open();
   }
+
+  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
+  var goalInput;
+  $("#submit-goal-btn").on("click", function () {
+    goalInput = parseInt($("#calorie-goal-input").val().trim());
+    $("#goal-display").text(goalInput);
+    $("#calorie-goal-input").val("");
+    return goalInput;
+  });
 
   // SUBMIT EVENT LISTENER \\
   $("#submitFood").on("click", function (event) {
@@ -51,7 +61,7 @@ $(document).ready(function () {
       url: queryFoodURL,
       method: "GET",
     }).then(function (response) {
-      confirmResponse(response);
+      // confirmResponse(response);
       //LOCAL STORAGE FOR CALORIES
       userCalories.push(response.calories);
       localStorage.setItem("userCalories", JSON.stringify(userCalories));
@@ -116,13 +126,14 @@ $(document).ready(function () {
     }
 
     //FUNCTION CARRIES THROUGH RESPONSE OBJECT FROM AJAX \\
-    function confirmResponse(response) {
-      console.log(response);
-      console.log(response.calories);
-      console.log(foodQuantity);
-    }
+    // function confirmResponse(response) {
+    //   // console.log(response);
+    //   // console.log(response.calories);
+    //   // console.log(foodQuantity);
+    // }
   });
-  // FUNCTION CARRIES THROUGH RESPONSE OBJECT FROM AJAX \\
+
+  //BUILDS AND POPULATES USER INPUT FROM LOCAL STORAGE \\
   function applyTable() {
     // CLEAR TABLE EACH TIME LOOP RUNS \\
     $("#main-table-header").empty();
@@ -137,7 +148,6 @@ $(document).ready(function () {
 
     // LOOP TO BUILD USER INPUT TABLE \\
     for (let i = 0; i < userCalories.length; i++) {
-      console.log(i);
       let newRow = $("<tr>");
       let newInput = $("<td>");
       newInput.attr("data-number", i);
@@ -147,14 +157,31 @@ $(document).ready(function () {
       newInputCalories.text(userCalories[i]);
       newRow.append(newInput, newInputCalories);
       $("#main-table-header").append(newRow);
+      //Calorie Counter + calories remaining
+    }
+    goalColor();
+
+    sum = userCalories.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+    console.log(sum);
+
+    $("#totalCalRemaining").text(sum);
+
+    // CALORIE GOAL BACKGROUND COLOR CHANGE \\
+    function goalColor() {
+      let magicNumber = (sum / goalInput) * 100;
+
+      if (magicNumber < 75) {
+        $("#cal-remaining-display").addClass("green");
+        $("#goal-display").addClass("green");
+      } else if (magicNumber >= 75 && magicNumber <= 100) {
+        $("#cal-remaining-display").addClass("yellow");
+        $("#goal-display").addClass("yellow");
+      } else {
+        $("#cal-remaining-display").addClass("red");
+        $("#goal-display").addClass("red");
+      }
     }
   }
-
-  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
-  $("#submit-goal-btn").on("click", function () {
-    const goalInput = parseInt($("#calorie-goal-input").val().trim());
-    $("#goal-display").text(goalInput);
-    $("#calorie-goal-input").val("");
-    console.log(goalInput);
-  });
 });
