@@ -17,29 +17,39 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 
-    <title>Calorie Counter</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <body>
-    <main class="container"></main>
-    <!-- NAV BAR -->
-    <nav>
-      <div class="nav-wrapper valign-wrapper">
-        <h2 class="brand-logo center">Welcome to Calorie Counter</h2>
-      </div>
-    </nav>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>	
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 
+  <title>Welcome to Cal-Oracle</title>
+</head>
+
+<body>
+  <main class="container"></main>
+  <!-- NAV BAR -->
+  <nav>
+    <div class="nav-wrapper">
+       <h3 id="brand-logo center">Welcome to Cal-Oracle</h3>
+    </div>
+ </nav>
     <div class="row">
-      <div class="col m4 l3">
+      <div class="col m4 l3" id="caloricDisplay">
+        
         <!-- QUANTITY INPUT ROW  -->
-        <div class="row quantity">
-          <input
-            placeholder="Quantity"
-            id="quantity-of-food"
-            type="text"
-            class="validate float-left"
-          />
-        </div>
+        <row class="row">
+          <input placeholder="Quantity" id="quantity-of-food" type="text" class="validate float-left"/>
+              <div class="row">
+    </div>
+        </row>
+
         <!-- MEASUREMENT DROPDOWN ROW -->
         <div class="row">
           <select id="measurement" class="browser-default center-align">
@@ -64,58 +74,46 @@
             >Submit</a
           >
         </div>
-        <!-- append food name, quantity and cal to this list -->
 
-        <table id="main-table-header"></table>
-        <div class="row">
-          <div id="cal-remaining-display" class="col s12 m12 l12">
-            <h6 id="totalCalRemaining">Display cal remaining here.</h6>
-          </div>
-          <button id="clear">Clear</button>
+        <table id="main-table-header">
+        </table>
+      <div class="row">
+        <div id="cal-remaining-display" class="col s12 m12 l12">
+          <h6 id="totalCal">Your total calories: </h6>
 
         </div>
       </div>
       <!-- CALORIE GOAL INPUT AND DISPLAY  -->
       <div class="row">
-        <div id="" class="col s4 m8 l9 blue">
-          <div class="col m5">
-            <input
-              placeholder="Calorie Goal"
-              id="calorie-goal-input"
-              type="text"
-              class="validate center-align valign"
-            />
-          </div>
-          <div class="col m2">
-            <a
-              class="waves-effect waves-light btn-small red"
-              id="submit-goal-btn"
-              >Submit</a
-            >
-          </div>
-          <div class="col m5 center-align">
-            <h5 id="goal-display" class=""></h5>
-          </div>
+        <div id="userGoal" class="col s4 m8 l9">
+
+        <div class="col m5 center-align">
+          <h5 id="goal-display"></h5>
         </div>
-        <div class="col s4 m8 l9 red">
-          <!-- SECOND API -->
-          <div class="card">
-            <div id="recipeChoice">
-              <!-- HIDE THIS UNTIL CLICK EVENT -->
-              <h5 id="recipeName">Recommended Recipe</h5>
-              <div>
-                <h5>Overview:</h5>
-                <h6 id="recipeSummary"></h6>
-              </div>
-              <div>
+          <div class="col m5">
+
+              <input placeholder="Calorie Goal" id="calorie-goal-input" type="text" class="validate center-align valign"
+              />
+            </div>
+            <div class="col m2">
+              <a class="waves-effect waves-light btn-small blue" id="submit-goal-btn">Set goal</a>
+            </div>
+          </div>
+          <div class="col s4 m8 l9" id="secondAPI">
+            <!-- SECOND API -->
+            <div class="card"> 
+              <div id="recipeChoice"> 
+                <h5 id="recipeName">Recommended Recipe</h5>
+                <div>
+                  <h5>Overview:</h5>
+                  <h6 id="recipeSummary"></h6>
+                </div>
+                <div>
                 <h5>Recipe:</h5>
                 <h6 id="recipe"></h6>
-                <img
-                  id="recipeImage"
-                  src="#"
-                  alt="your next meal"
-                  width="200"
-                />
+                <img id="recipeImage" src="" alt="dishImg" width=300 />
+                </div>
+
               </div>
             </div>
           </div>
