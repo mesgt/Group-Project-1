@@ -1,43 +1,52 @@
 body {
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(231, 233, 151);
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: darkblue;
+    color: rgb(102, 100, 100);
     opacity: 1; /* Firefox */
+    font-size: 20px;
 }
 
 .nav-wrapper {
-    background-color: rgb(23, 21, 182) !important;
+    background-color: rgb(7, 114, 21);
     text-align: center;
 }
 
+#goal-display {
+    font-weight: bolder;
+}
+
+/* #userGoal {
+    background-color: rgb(231, 233, 151);
+} */
 
 #recipeChoice {
     /* visibility: hidden; */
 }
 
-#caloricDisplay {
-    background-color: lightgray;
+/* #caloricDisplay {
+    background-color: rgb(231, 233, 151);
+} */
+
+#secondAPI {
+    background-color: rgb(7, 114, 21);
 }
 
-#quantity-of-food {
+#quantity-of-food, #type-of-food {
     padding-left: 12px;
-    background-color: lightblue;
+    background-color: white;
+    font-size: 20px;
 }
 
 #measurement {
-    background-color: lightblue;
-}
-
-#type-of-food {
-    padding-left: 12px;
-    background-color: lightblue;
+    background-color: white;
 }
 
 #cal-remaining-display {
-    background-color: rgb(23, 21, 182);
+    background-color: rgb(7, 114, 21);
 }
 
 #totalCal {

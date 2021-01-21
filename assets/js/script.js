@@ -21,7 +21,7 @@ $(document).ready(function () {
   var goalInput;
   $("#submit-goal-btn").on("click", function () {
     goalInput = parseInt($("#calorie-goal-input").val().trim());
-    $("#goal-display").text(goalInput);
+    $("#goal-display").text("Your calorie goal is: " + goalInput);
     $("#calorie-goal-input").val("");
     return goalInput;
   });
@@ -165,7 +165,7 @@ $(document).ready(function () {
       return a + b;
     }, 0);
 
-    $("#totalCal").text("Your total calories:    " +sum);
+    $("#totalCal").text("Your total calories-->" + sum);
 
     // CALORIE GOAL BACKGROUND COLOR CHANGE \\
     // function goalColor() {
