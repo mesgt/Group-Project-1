@@ -1,58 +1,20 @@
-body {
-    font-size: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(231, 233, 151);
-}
+/* *, *::before, *::after {
+    box-sizing: border-box;
+} */
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: rgb(102, 100, 100);
-    opacity: 1; /* Firefox */
+body {
     font-size: 20px;
 }
 
 .nav-wrapper {
-    background-color: rgb(7, 114, 21);
-    text-align: center;
-}
-
-#goal-display {
-    font-weight: bolder;
-}
-
-#secondAPI {
-    background-color: rgb(7, 114, 21);
+    background-color: rgba(85, 16, 16, 0.226);
+/* needs to be centered vertically */
 }
 
 #recipeChoice {
-    padding: 15px;
-    display: none;
-}
-
-#quantity-of-food, #type-of-food {
-    padding-left: 12px;
-    background-color: white;
-    font-size: 20px;
-}
-
-#measurement {
-    background-color: white;
-}
-
-#cal-remaining-display {
-    background-color: rgb(7, 114, 21);
-}
-
-#totalCal {
-    font-size: 25px;
-    font-style: bolder;
-    color: white;
+    /* visibility: hidden; */
 }
 
 #recipeName {
     font-weight: bolder;
-}
-
-#brand-logo center {
-    text-orientation: upright;
-    text-align: center;
 }
