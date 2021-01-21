@@ -21,7 +21,7 @@ $(document).ready(function () {
   var goalInput;
   $("#submit-goal-btn").on("click", function () {
     goalInput = parseInt($("#calorie-goal-input").val().trim());
-    $("#goal-display").text(goalInput);
+    $("#goal-display").text("Your calorie goal is: " + goalInput);
     $("#calorie-goal-input").val("");
     return goalInput;
   });
@@ -87,6 +87,7 @@ $(document).ready(function () {
         url: queryRecipeURL,
         method: "GET",
       }).then(function (recipeResponse) {
+        $("#recipeChoice").attr("style", "display:block");
         recipeLookUp = recipeResponse[Math.floor(Math.random()*recipeResponse.length)];
         var recipeTitle = JSON.stringify(recipeLookUp.title);
         recipeTitle = recipeTitle.replace(/"/g, "");
@@ -159,28 +160,28 @@ $(document).ready(function () {
       $("#main-table-header").append(newRow);
       //Calorie Counter + calories remaining
     }
-    goalColor();
+    // goalColor();
 
     sum = userCalories.reduce(function (a, b) {
       return a + b;
     }, 0);
 
-    $("#totalCalRemaining").text("Your total calories: " +sum);
+    $("#totalCal").text("Your total calories-->" + sum);
 
     // CALORIE GOAL BACKGROUND COLOR CHANGE \\
-    function goalColor() {
-      let magicNumber = (sum / goalInput) * 100;
+    // function goalColor() {
+    //   let magicNumber = (sum / goalInput) * 100;
 
-      if (magicNumber < 75) {
-        $("#cal-remaining-display").addClass("green");
-        $("#goal-display").addClass("green");
-      } else if (magicNumber >= 75 && magicNumber <= 100) {
-        $("#cal-remaining-display").addClass("yellow");
-        $("#goal-display").addClass("yellow");
-      } else {
-        $("#cal-remaining-display").addClass("red");
-        $("#goal-display").addClass("red");
-      }
-    }
+    //   if (magicNumber < 75) {
+    //     $("#cal-remaining-display").addClass("green");
+    //     $("#goal-display").addClass("green");
+    //   } else if (magicNumber >= 75 && magicNumber <= 100) {
+    //     $("#cal-remaining-display").addClass("yellow");
+    //     $("#goal-display").addClass("yellow");
+    //   } else {
+    //     $("#cal-remaining-display").addClass("red");
+    //     $("#goal-display").addClass("red");
+    //   }
+    // }
   }
 });
