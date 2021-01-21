@@ -10,21 +10,11 @@ $(document).ready(function () {
   var sum;
 
   // MODAL INITIALIZATION FUNCTION \\
-
   $(".modal").modal();
   function toggleModal() {
     var instance = M.Modal.getInstance($("#modal1"));
     instance.open();
   }
-
-  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
-  var goalInput;
-  $("#submit-goal-btn").on("click", function () {
-    goalInput = parseInt($("#calorie-goal-input").val().trim());
-    $("#goal-display").text(goalInput);
-    $("#calorie-goal-input").val("");
-    return goalInput;
-  });
 
   // SUBMIT EVENT LISTENER \\
   $("#submitFood").on("click", function (event) {
@@ -38,6 +28,7 @@ $(document).ready(function () {
 
     //CLEAR FORM FUNCTION CALL \\
     formClear();
+
     // CONCATENATE USER UI INPUT PREPARE TO SEND TO API \\
     let foodStringAPI = `${foodQuantity} ${foodMeasurement} ${foodType}`;
 
@@ -61,7 +52,8 @@ $(document).ready(function () {
       url: queryFoodURL,
       method: "GET",
     }).then(function (response) {
-      // confirmResponse(response);
+      confirmResponse(response);
+
       //LOCAL STORAGE FOR CALORIES
       userCalories.push(response.calories);
       localStorage.setItem("userCalories", JSON.stringify(userCalories));
@@ -76,7 +68,6 @@ $(document).ready(function () {
       formClear();
 
       //Second API- recipe. Triggered when user enters new food ingredient.
-
       let recipeRequest = foodType;
       let apiKey1 = "4da9dd4148874160a27f2aee5c61d935";
       let apiKey2 = "3972ed1ffd3e45199211b165635f7657";
@@ -87,7 +78,6 @@ $(document).ready(function () {
         url: queryRecipeURL,
         method: "GET",
       }).then(function (recipeResponse) {
-        // console.log(recipe)
         recipeLookUp = JSON.stringify(recipeResponse[0].title);
         recipeLookUp = recipeLookUp.replace(/"/g, "");
         $("#recipeName").text(recipeLookUp);
@@ -104,7 +94,6 @@ $(document).ready(function () {
           summaryDisplayMod = JSON.stringify(summaryDisplay);
           summaryDisplayMod = summaryDisplayMod.replace(/"/g, "");
           $("#recipeSummary").html(summaryDisplayMod);
-          console.log(summaryDisplayMod);
 
           var recipeDisplay = recipeInstructions.instructions;
           recipeDisplayMod = JSON.stringify(recipeDisplay);
@@ -126,11 +115,7 @@ $(document).ready(function () {
     }
 
     //FUNCTION CARRIES THROUGH RESPONSE OBJECT FROM AJAX \\
-    // function confirmResponse(response) {
-    //   // console.log(response);
-    //   // console.log(response.calories);
-    //   // console.log(foodQuantity);
-    // }
+    function confirmResponse(response) {}
   });
 
   //BUILDS AND POPULATES USER INPUT FROM LOCAL STORAGE \\
@@ -157,31 +142,60 @@ $(document).ready(function () {
       newInputCalories.text(userCalories[i]);
       newRow.append(newInput, newInputCalories);
       $("#main-table-header").append(newRow);
-      //Calorie Counter + calories remaining
     }
-    goalColor();
 
+    //ADDING USER INPUT CALORIES TO SUM \\
     sum = userCalories.reduce(function (a, b) {
       return a + b;
     }, 0);
-    console.log(sum);
 
+    //ADDING CALORIE TOTAL TO UI \\
     $("#totalCalRemaining").text(sum);
 
-    // CALORIE GOAL BACKGROUND COLOR CHANGE \\
-    function goalColor() {
-      let magicNumber = (sum / goalInput) * 100;
+    goalColor(sum);
+  }
 
-      if (magicNumber < 75) {
-        $("#cal-remaining-display").addClass("green");
-        $("#goal-display").addClass("green");
-      } else if (magicNumber >= 75 && magicNumber <= 100) {
-        $("#cal-remaining-display").addClass("yellow");
-        $("#goal-display").addClass("yellow");
-      } else {
-        $("#cal-remaining-display").addClass("red");
-        $("#goal-display").addClass("red");
-      }
+  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
+  var goalInput;
+  $("#submit-goal-btn").on("click", function () {
+    goalInput = parseInt($("#calorie-goal-input").val().trim());
+    $("#goal-display").text(goalInput);
+    $("#calorie-goal-input").val("");
+  });
+
+  // CALORIE GOAL BACKGROUND COLOR CHANGE \\
+  function goalColor(sum) {
+    let magicNumber = Math.floor((sum / goalInput) * 100);
+    if (magicNumber < 75) {
+      $("#cal-remaining-display").removeClass("red");
+      $("#goal-display").removeClass("red");
+      $("#cal-remaining-display").removeClass("yellow");
+      $("#goal-display").removeClass("yellow");
+      $("#cal-remaining-display").addClass("green");
+      $("#goal-display").addClass("green");
+    } else if (magicNumber >= 75 && magicNumber <= 100) {
+      $("#cal-remaining-display").removeClass("red");
+      $("#goal-display").removeClass("red");
+      $("#cal-remaining-display").removeClass("green");
+      $("#goal-display").removeClass("green");
+      $("#cal-remaining-display").addClass("yellow");
+      $("#goal-display").addClass("yellow");
+    } else if (magicNumber > 100) {
+      $("#cal-remaining-display").removeClass("green");
+      $("#goal-display").removeClass("green");
+      $("#cal-remaining-display").removeClass("yellow");
+      $("#goal-display").removeClass("yellow");
+      $("#cal-remaining-display").addClass("red");
+      $("#goal-display").addClass("red");
+    } else {
+      $("#cal-remaining-display").addClass("green");
+      $("#goal-display").addClass("green");
     }
   }
+
+  // BUTTON TO CLEAR LOCAL STORAGE \\
+  $("#clear").on("click", function () {
+    localStorage.clear();
+    window.location.reload();
+  });
 });
