@@ -87,6 +87,7 @@ $(document).ready(function () {
         url: queryRecipeURL,
         method: "GET",
       }).then(function (recipeResponse) {
+        $("#recipeChoice").attr("style", "display:block");
         recipeLookUp = recipeResponse[Math.floor(Math.random()*recipeResponse.length)];
         var recipeTitle = JSON.stringify(recipeLookUp.title);
         recipeTitle = recipeTitle.replace(/"/g, "");

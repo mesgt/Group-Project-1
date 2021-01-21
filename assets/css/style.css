@@ -19,20 +19,13 @@ body {
     font-weight: bolder;
 }
 
-/* #userGoal {
-    background-color: rgb(231, 233, 151);
-} */
-
-#recipeChoice {
-    /* visibility: hidden; */
-}
-
-/* #caloricDisplay {
-    background-color: rgb(231, 233, 151);
-} */
-
 #secondAPI {
     background-color: rgb(7, 114, 21);
+}
+
+#recipeChoice {
+    padding: 15px;
+    display: none;
 }
 
 #quantity-of-food, #type-of-food {
