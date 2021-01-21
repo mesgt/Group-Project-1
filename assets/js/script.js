@@ -16,16 +16,6 @@ $(document).ready(function () {
     instance.open();
   }
 
-
-  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
-  var goalInput;
-  $("#submit-goal-btn").on("click", function () {
-    goalInput = parseInt($("#calorie-goal-input").val().trim());
-    $("#goal-display").text("Your calorie goal is: " + goalInput);
-    $("#calorie-goal-input").val("");
-    return goalInput;
-  });
-
   // SUBMIT EVENT LISTENER \\
   $("#submitFood").on("click", function (event) {
     event.preventDefault();
@@ -89,13 +79,13 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (recipeResponse) {
 
-        $("#recipeChoice").attr("style", "display:block");
-        recipeLookUp = recipeResponse[Math.floor(Math.random()*recipeResponse.length)];
-        var recipeTitle = JSON.stringify(recipeLookUp.title);
-        recipeTitle = recipeTitle.replace(/"/g, "");
-        $("#recipeName").text(recipeTitle);
-        var recipeID = recipeLookUp.id; //ID TO LOOK UP RECIPE INSTRUCTIONS
-        let findRecipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=${false}&apiKey=${apiKey1}`;
+        recipeLookUp = JSON.stringify(recipeResponse[0].title);
+        recipeLookUp = recipeLookUp.replace(/"/g, "");
+        $("#recipeName").text(recipeLookUp);
+        var recipeID = recipeResponse[0].id; //ID TO LOOK UP RECIPE INSTRUCTIONS
+        let findRecipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=${false}&apiKey=${apiKey3}`;
+
+    
 
 
         //FIND RECIPE SUMMARY AND INSTRUCTIONS
@@ -164,7 +154,10 @@ $(document).ready(function () {
     }, 0);
 
 
-    $("#totalCal").text("Your total calories-->" + sum);
+    //ADDING CALORIE TOTAL TO UI \\
+    $("#totalCalRemaining").text(sum);
+
+
 
 
     goalColor(sum);
@@ -206,7 +199,6 @@ $(document).ready(function () {
       $("#cal-remaining-display").addClass("green");
       $("#goal-display").addClass("green");
     }
-
   }
 
   // BUTTON TO CLEAR LOCAL STORAGE \\
