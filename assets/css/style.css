@@ -1,58 +1,60 @@
 body {
-    font-size: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(231, 233, 151);
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(231, 233, 151);
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: rgb(102, 100, 100);
-    opacity: 1; /* Firefox */
-    font-size: 20px;
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(102, 100, 100);
+  opacity: 1; /* Firefox */
+  font-size: 20px;
 }
 
 .nav-wrapper {
-    background-color: rgb(7, 114, 21);
-    text-align: center;
+  background-color: rgb(7, 114, 21);
+  text-align: center;
 }
 
 #goal-display {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 #secondAPI {
-    background-color: rgb(7, 114, 21);
+  background-color: rgb(7, 114, 21);
 }
 
 #recipeChoice {
-    padding: 15px;
-    display: none;
+  padding: 15px;
+  display: none;
 }
 
-#quantity-of-food, #type-of-food {
-    padding-left: 12px;
-    background-color: white;
-    font-size: 20px;
+#quantity-of-food,
+#type-of-food {
+  padding-left: 12px;
+  background-color: white;
+  font-size: 20px;
 }
 
 #measurement {
-    background-color: white;
+  background-color: white;
 }
 
 #cal-remaining-display {
-    background-color: rgb(7, 114, 21);
+  background-color: rgb(7, 114, 21);
 }
 
 #totalCal {
-    font-size: 25px;
-    font-style: bolder;
-    color: white;
+  font-size: 25px;
+  font-style: bolder;
+  color: white;
 }
 
 #recipeName {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 #brand-logo center {
-    text-orientation: upright;
-    text-align: center;
+  text-orientation: upright;
+  text-align: center;
 }
