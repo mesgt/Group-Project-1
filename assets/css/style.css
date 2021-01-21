@@ -1,20 +1,56 @@
-/* *, *::before, *::after {
-    box-sizing: border-box;
-} */
-
 body {
     font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: darkblue;
+    opacity: 1; /* Firefox */
 }
 
 .nav-wrapper {
-    background-color: rgba(85, 16, 16, 0.226);
-/* needs to be centered vertically */
+    background-color: rgb(23, 21, 182) !important;
+    text-align: center;
 }
+
 
 #recipeChoice {
     /* visibility: hidden; */
 }
 
+#caloricDisplay {
+    background-color: lightgray;
+}
+
+#quantity-of-food {
+    padding-left: 12px;
+    background-color: lightblue;
+}
+
+#measurement {
+    background-color: lightblue;
+}
+
+#type-of-food {
+    padding-left: 12px;
+    background-color: lightblue;
+}
+
+#cal-remaining-display {
+    background-color: rgb(23, 21, 182);
+}
+
+#totalCal {
+    font-size: 25px;
+    font-style: bolder;
+    color: white;
+}
+
 #recipeName {
     font-weight: bolder;
+}
+
+#brand-logo center {
+    text-orientation: upright;
+    text-align: center;
 }
