@@ -72,17 +72,21 @@ $(document).ready(function () {
       let apiKey1 = "4da9dd4148874160a27f2aee5c61d935";
       let apiKey2 = "3972ed1ffd3e45199211b165635f7657";
       let apiKey3 = "e5443e35932544eeaa88e04a12015232";
-      let queryRecipeURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${recipeRequest}&number=5&limitLicense=${true}&ranking=1&ignorePantry=${true}&apiKey=${apiKey3}`;
+      let queryRecipeURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${recipeRequest}&number=5&limitLicense=${true}&ranking=1&ignorePantry=${true}&apiKey=${apiKey1}`;
       //FIND RECIPE NAME
       $.ajax({
         url: queryRecipeURL,
         method: "GET",
       }).then(function (recipeResponse) {
+
         recipeLookUp = JSON.stringify(recipeResponse[0].title);
         recipeLookUp = recipeLookUp.replace(/"/g, "");
         $("#recipeName").text(recipeLookUp);
         var recipeID = recipeResponse[0].id; //ID TO LOOK UP RECIPE INSTRUCTIONS
         let findRecipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=${false}&apiKey=${apiKey3}`;
+
+    
+
 
         //FIND RECIPE SUMMARY AND INSTRUCTIONS
         $.ajax({
@@ -149,8 +153,12 @@ $(document).ready(function () {
       return a + b;
     }, 0);
 
+
     //ADDING CALORIE TOTAL TO UI \\
     $("#totalCalRemaining").text(sum);
+
+
+
 
     goalColor(sum);
   }
