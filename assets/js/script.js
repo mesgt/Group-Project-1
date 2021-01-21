@@ -17,15 +17,6 @@ $(document).ready(function () {
     instance.open();
   }
 
-  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
-  var goalInput;
-  $("#submit-goal-btn").on("click", function () {
-    goalInput = parseInt($("#calorie-goal-input").val().trim());
-    $("#goal-display").text("Your calorie goal is: " + goalInput);
-    $("#calorie-goal-input").val("");
-    return goalInput;
-  });
-
   // SUBMIT EVENT LISTENER \\
   $("#submitFood").on("click", function (event) {
     event.preventDefault();
@@ -88,7 +79,8 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (recipeResponse) {
         $("#recipeChoice").attr("style", "display:block");
-        recipeLookUp = recipeResponse[Math.floor(Math.random()*recipeResponse.length)];
+        recipeLookUp =
+          recipeResponse[Math.floor(Math.random() * recipeResponse.length)];
         var recipeTitle = JSON.stringify(recipeLookUp.title);
         recipeTitle = recipeTitle.replace(/"/g, "");
         $("#recipeName").text(recipeTitle);
@@ -128,9 +120,6 @@ $(document).ready(function () {
 
     //FUNCTION CARRIES THROUGH RESPONSE OBJECT FROM AJAX \\
     // function confirmResponse(response) {
-    //   // console.log(response);
-    //   // console.log(response.calories);
-    //   // console.log(foodQuantity);
     // }
   });
 
@@ -166,22 +155,54 @@ $(document).ready(function () {
       return a + b;
     }, 0);
 
+    //ADDING CALORIE TOTAL TO UI \\
     $("#totalCal").text("Your total calories-->" + sum);
 
-    // CALORIE GOAL BACKGROUND COLOR CHANGE \\
-    // function goalColor() {
-    //   let magicNumber = (sum / goalInput) * 100;
-
-    //   if (magicNumber < 75) {
-    //     $("#cal-remaining-display").addClass("green");
-    //     $("#goal-display").addClass("green");
-    //   } else if (magicNumber >= 75 && magicNumber <= 100) {
-    //     $("#cal-remaining-display").addClass("yellow");
-    //     $("#goal-display").addClass("yellow");
-    //   } else {
-    //     $("#cal-remaining-display").addClass("red");
-    //     $("#goal-display").addClass("red");
-    //   }
-    // }
+    goalColor(sum);
   }
+
+  //CALORIE GOAL INPUT/SUBMIT/DISPLAY
+  var goalInput;
+  $("#submit-goal-btn").on("click", function () {
+    goalInput = parseInt($("#calorie-goal-input").val().trim());
+    $("#goal-display").text("Your calorie goal is: " + goalInput);
+    $("#calorie-goal-input").val("");
+    return goalInput;
+  });
+
+  // CALORIE GOAL BACKGROUND COLOR CHANGE \\
+  function goalColor(sum) {
+    let magicNumber = Math.floor((sum / goalInput) * 100);
+    if (magicNumber < 75) {
+      $("#cal-remaining-display").removeClass("red");
+      $("#goal-display").removeClass("red");
+      $("#cal-remaining-display").removeClass("yellow");
+      $("#goal-display").removeClass("yellow");
+      $("#cal-remaining-display").addClass("green");
+      $("#goal-display").addClass("green");
+    } else if (magicNumber >= 75 && magicNumber <= 100) {
+      $("#cal-remaining-display").removeClass("red");
+      $("#goal-display").removeClass("red");
+      $("#cal-remaining-display").removeClass("green");
+      $("#goal-display").removeClass("green");
+      $("#cal-remaining-display").addClass("yellow");
+      $("#goal-display").addClass("yellow");
+    } else if (magicNumber > 100) {
+      $("#cal-remaining-display").removeClass("green");
+      $("#goal-display").removeClass("green");
+      $("#cal-remaining-display").removeClass("yellow");
+      $("#goal-display").removeClass("yellow");
+      $("#cal-remaining-display").addClass("red");
+      $("#goal-display").addClass("red");
+    } else {
+      $("#cal-remaining-display").addClass("green");
+      $("#goal-display").addClass("green");
+    }
+  }
+
+  // BUTTON TO CLEAR LOCAL STORAGE \\
+  $("#clear").on("click", function () {
+    localStorage.clear();
+    window.location.reload();
+  });
 });
