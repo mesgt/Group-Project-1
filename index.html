@@ -5,36 +5,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-  
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>	
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 
-  <title>Calorie Counter</title>
+  <title>Welcome to Cal-Oracle</title>
 </head>
 
 <body>
   <main class="container"></main>
   <!-- NAV BAR -->
   <nav>
-    <div class = "nav-wrapper">
-       <h2 class = "brand-logo center">Welcome to Calorie Counter</h2>
+    <div class="nav-wrapper">
+       <h3 id="brand-logo center">Welcome to Cal-Oracle</h3>
     </div>
  </nav>
-
     <div class="row">
-      <div class="col m4 l3">
+      <div class="col m4 l3" id="caloricDisplay">
         
         <!-- QUANTITY INPUT ROW  -->
-        <row class="quantity">
+        <row class="row">
           <input placeholder="Quantity" id="quantity-of-food" type="text" class="validate float-left"/>
               <div class="row">
-
     </div>
         </row>
         <!-- MEASUREMENT DROPDOWN ROW -->
@@ -54,41 +51,32 @@
         <div class="row center-align ">
           <a class="waves-effect waves-light btn-small blue" id="submitFood">Submit</a>
         </div>
-        <!-- append food name, quantity and cal to this list -->
         <table id="main-table-header">
         </table>
       <div class="row">
-        <!-- -------------------------------------------------  -->
         <div id="cal-remaining-display" class="col s12 m12 l12">
-          <h6 id="totalCalRemaining">Your total calories: </h6>
+          <h6 id="totalCal">Your total calories: </h6>
         </div>
       </div>
       </div>
       <!-- CALORIE GOAL INPUT AND DISPLAY  -->
       <div class="row">
-        <div id="" class="col s4 m8 l9 blue">
+        <div id="userGoal" class="col s4 m8 l9">
+
+        <div class="col m5 center-align">
+          <h5 id="goal-display"></h5>
+        </div>
           <div class="col m5">
-              <input
-                placeholder="Calorie Goal"
-                id="calorie-goal-input"
-                type="text"
-                class="validate center-align valign"
+              <input placeholder="Calorie Goal" id="calorie-goal-input" type="text" class="validate center-align valign"
               />
             </div>
             <div class="col m2">
-              <a
-                class="waves-effect waves-light btn-small red"
-                id="submit-goal-btn"
-                >Submit</a
-              >
+              <a class="waves-effect waves-light btn-small blue" id="submit-goal-btn">Set goal</a>
             </div>
-        <div class="col m5 center-align">
-          <h5 id="goal-display" class=""></h5>
-        </div>
-        <!-- ---------------------------------------------  -->
-          </div>
-          <div class="col s4 m8 l9 red">
 
+
+          </div>
+          <div class="col s4 m8 l9" id="secondAPI">
             <!-- SECOND API -->
             <div class="card"> 
               <div id="recipeChoice"> <!-- HIDE THIS UNTIL CLICK EVENT -->
@@ -100,15 +88,13 @@
                 <div>
                 <h5>Recipe:</h5>
                 <h6 id="recipe"></h6>
-                <img id="recipeImage" src="#" alt="your next meal" width=200 />
+                <img id="recipeImage" src="" alt="dishImg" width=300 />
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- append food name, quantity and cal to this list -->
       <h1></h1>
 
       <!-- Modal Structure -->
