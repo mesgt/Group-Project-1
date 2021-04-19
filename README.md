@@ -1,44 +1,65 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Cal-Oracle
 An easy way to track your calories and stay within your caloric goal.
 
-## Overview
+
+## Deployed Link
+
+(https://mesgt.github.io/cal-Oracle/)
+
+
+# Application Details
+
+## Purpose
 Get your body swimsuit ready by using the Cal-Oracle App to set your caloric intake goals and track your progress throughout the day.
-<br>
-When the user opens up the application, he/she will see an input box to enter their calorie goal for the day. Once this goal is submitted, it will be displayed on the page as a reminder. The user will keep track of their calories by entering the quantity and the food item into a search bar, which will search a database for the number of calories each food item contains. The application will then display the food item and the number of calories this item contains on the list below the search bar. The list is stored on Local Storage and therefore continue to display the food items and calories until Local Storage is cleared.
-<br>
-As an additional feature, each time the user searches for a food item, the application will suggest a random recipe that contains that item. The listing will include a short summary of the meal, ingredients, instructions and a picture of this tasty dish.
 
-## Project Team
-<br>
-Chad Clark - project leader 
-<br>
-Evan St Martin
-<br>
-Maria Sargent
-<br>
-Troy Wills
-<br>
 
-## Links
+## Description
 
-Repository: (https://github.com/chadclark1234/Group-Project-1)
-<br>
-Deploy Link: (https://chadclark1234.github.io/Group-Project-1/)
+Our app allows the user to enter their caloric goal for the day and enter the amount and type of food they eat throughout the day to see how many calories they have consumed. The total calories are obtained from third party API Edamam. Our goal was to create a way for the user to know when they are reaching their limit by the total caloric intake summary background color. The background is green when the user is well within their goal, yellow when they pass 75% of their total goal warning the user they are getting close and red when they have consumed more than they planned. The information is stored in user's Local Storage and can be deleted by the user with the 'clear' button. 
 
-## Application Preview
-In order to use this application, you will need to visit the deploy link referenced above and have a GitHub user account. If you don't have one, you'll need to create one. There is currently no independent login functionality associated with the application.
-<br>
-<br>
-<img src="assets/images/Cal-Oracle1.jpg" alt="Cal-Oracle img1" width="300"/>
+In addition, to encourage the user to eat healthier, each time a food item is entered by the user, a randomly selected recipe is displayed on the page through third party API Spoonacular. The listing will include a short summary of the meal, ingredients, instructions and a picture of this tasty dish.
 
-## Future Development Options
+
+## Technologies
+
+<li>Materialize (CSS framework)
+<li>third party APIs 
+<li>Modals
+
+
+## Future Development
+
 <ul>
     <li>Improve on the overall flow and look of the application.</li>
     <li>Add a progress bar or color coding to indicate percent of calories consumed vs. the daily goal.</li>
     <li>Add an option for the user to delete items off of the consumed calories list.</li>
-    <li>Add a reset button for the application.</li>
     <li>Link the hyperlinks provided by the Spoonacular API so the user can visit the websites.</li>
     <li>Look for ways to have recipe option include multiple ingredients from the list.</li>
     <li>Add an option to toggle between standard and metric measurement types.</li>
     <li>Add a weekly summary option where the user can review calories consumed and daily goal status for previous days of the week.</li>
 </ul>
+
+
+## License
+
+Licensed under the [MIT](https://opensource.org/licenses/MIT) license.
+
+## GitHub and Contributors
+
+(https://github.com/mesgt/cal-Oracle)
+
+<br>
+
+[Maria Sargent](https://github.com/mesgt)
+
+
+## Contributing
+
+I would like to welcome you to work with me on improving this project. Feel free to contact me on gitHub or submit a pull request.
+
+Please note that this project is released with a Contributor Code of Conduct. 
+By participating in this project you agree to abide by its terms. 
+
+If you are interested in collaborating with me on this project, please visit (https://www.contributor-covenant.org/version/2/0/code_of_conduct/) to review the latest version of Contributor Covenant. In Node.js, please run the following command "npm install -g covgen" and "covgen '<your_email_address>'". If you have npm 5.x installed you can run npx covgen <your_email_address> instead of installing globally.
