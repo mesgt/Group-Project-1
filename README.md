@@ -50,8 +50,6 @@ Licensed under the [MIT](https://opensource.org/licenses/MIT) license.
 
 (https://github.com/mesgt/cal-Oracle)
 
-<br>
-
 [Maria Sargent](https://github.com/mesgt)
 
 
